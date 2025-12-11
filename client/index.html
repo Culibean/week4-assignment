@@ -17,33 +17,35 @@
     <main>
       <h4>Add your details and share your journeys</h4>
       <form id="airline-form">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required />
+        <fieldset>
+          <legend>Your Skylog</legend>
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
 
-        <label for="date">Take-off</label>
-        <input type="date" id="date" name="date" required />
+          <label for="date">Take-off</label>
+          <input type="date" id="date" name="date" required />
 
-        <label for="departure">Departure Airport</label>
-        <select id="departure" name="departure">
-          <option value="">Select departure airport</option>
-          <!-- options coming from Supabase -->
-        </select>
+          <label for="departure">Departure Airport</label>
+          <select id="departure" name="departure">
+            <option value="">Select departure airport</option>
+            <!-- options coming from Supabase -->
+          </select>
 
-        <label for="arrival">Arrival Airport</label>
-        <select id="arrival" name="arrival">
-          <option value="" name="arrival">Select arrival Airport</option>
-        </select>
+          <label for="arrival">Arrival Airport</label>
+          <select id="arrival" name="arrival">
+            <option value="" name="arrival">Select arrival Airport</option>
+          </select>
 
-        <label for="airline">Airline</label>
-        <select id="airline" name="airline">
-          <option value="" name="airline">Select airline</option>
-        </select>
+          <label for="airline">Airline</label>
+          <select id="airline" name="airline">
+            <option value="" name="airline">Select airline</option>
+          </select>
 
-        <label for="aircraft">Aircraft Type</label>
-        <select id="aircraft" name="aircraft">
-          <option value="">Select aircraft type</option>
-        </select>
-
+          <label for="aircraft">Aircraft Type</label>
+          <select id="aircraft" name="aircraft">
+            <option value="">Select aircraft type</option>
+          </select>
+        </fieldset>
         <button type="submit">Skylog your flight</button>
       </form>
     </main>
