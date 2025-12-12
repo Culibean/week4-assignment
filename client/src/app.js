@@ -71,3 +71,22 @@ async function selectAircraft() {
 selectAirports();
 selectAirline();
 selectAircraft();
+
+//TODO: create function so when user submits their data, it reaches the database
+
+function handleSkyLogsubmit(event) {
+  event.preventDefault();
+  const formDataTemplate = new FormData(skyLogForm);
+  const formValues = Object.fromEntries(formDataTemplate);
+  console.log(formValues);
+
+  fetch("https://week4-assignment-1-mku5.onrender.com/new-skylog", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ formValues }),
+  });
+}
+
+skyLogForm.addEventListener("submit", handleSkyLogsubmit);
