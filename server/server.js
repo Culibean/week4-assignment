@@ -53,7 +53,7 @@ app.get("/airports", async (req, res) => {
   const query = await db.query(
     `SELECT iata_code, name FROM iata ORDER BY name; `
   );
-  console.log(query);
+  console.log(query.rows);
   res.json(query.rows);
 });
 
@@ -61,7 +61,7 @@ app.get("/aircrafts", async (req, res) => {
   const query = await db.query(
     `SELECT aircraft FROM aircraft ORDER BY aircraft; `
   );
-  console.log(query);
+  console.log(query.rows);
   res.json(query.rows);
 });
 
@@ -69,6 +69,6 @@ app.get("/airlines", async (req, res) => {
   const query = await db.query(
     `SELECT airline FROM airline ORDER BY airline; `
   );
-  console.log(query);
+  console.log(query.rows);
   res.json(query.rows);
 });
