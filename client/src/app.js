@@ -87,6 +87,27 @@ function handleSkyLogsubmit(event) {
     },
     body: JSON.stringify({ formValues }),
   });
+  skyLogForm.reset();
 }
 
 skyLogForm.addEventListener("submit", handleSkyLogsubmit);
+
+//add the entries below the form in a guestbook style (use append and create). Decided to use loop and fetch so each entry creates its own card and other users can see entries
+
+async function SkylogEntries() {
+  const res = await fetch(
+    "https://week4-assignment-1-mku5.onrender.com/skylog"
+  ); //fetch directly from subabase database via server
+  const skylogs = await res.json();
+
+  const section = document.getElementById("user-input");
+  skylogs.forEach(function (log) {
+    //added loop here as I want that each entry is it's own section
+    const entry = document.createElement("div");
+    entry.className = "logentry";
+    entry.textContent = `${formValues.username} took off from ${formValues.departure} on ${formValues.flight_date} with ${formValues.airline} heading to ${formValues.arrival} on a ${formValues.aircraft}`;
+    section.appendChild(entry);
+  });
+}
+
+SkylogEntries();
