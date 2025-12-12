@@ -29,7 +29,7 @@ app.post("/new-skylog", async (req, res) => {
     `INSERT INTO skylog (username, flight_date, departure, arrival, airline, aircraft) VALUES ($1, $2, $3, $4, $5, $6)`,
     [
       newSkyLog.username,
-      newSkyLog.date,
+      newSkyLog.flight_date,
       newSkyLog.departure,
       newSkyLog.arrival,
       newSkyLog.airline,
