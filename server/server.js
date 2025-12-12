@@ -1,6 +1,6 @@
 //required imports
 
-import express from "express";
+import express, { response } from "express";
 import cors from "cors";
 import { db } from "./dbConnection.js";
 
@@ -45,4 +45,26 @@ app.get("/skylog", async function (request, response) {
   );
   console.log(query);
   response.json(query.rows);
+});
+
+//TODO: have GET methods so the server can grab the inidivdiual databases for the client to fetch and fill in drop downs
+
+app.get("/airports", async (req, res) => {
+  const query = await db.query(
+    `SELECT iata_code, name FROM iata ORDER BY name; `
+  );
+  console.log(query);
+  res.json(query.rows);
+});
+
+app.get("/aircrafts", async (req, res) => {
+  const query = await db.query(`SELECT aircraft FROM aircraft ORDER BY name; `);
+  console.log(query);
+  res.json(query.rows);
+});
+
+app.get("/airlines", async (req, res) => {
+  const query = await db.query(`SELECT airline FROM airline ORDER BY name; `);
+  console.log(query);
+  res.json(query.rows);
 });
