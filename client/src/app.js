@@ -105,7 +105,7 @@ async function SkylogEntries() {
     //added loop here as I want that each entry is it's own section
     const entry = document.createElement("div");
     entry.className = "logentry";
-    entry.textContent = `${formValues.username} took off from ${formValues.departure} on ${formValues.flight_date} with ${formValues.airline} heading to ${formValues.arrival} on a ${formValues.aircraft}`;
+    entry.textContent = `${log.username} took off from ${log.departure} on ${log.flight_date} with ${log.airline} heading to ${log.arrival} on a ${log.aircraft}`;
     section.appendChild(entry);
   });
 }
