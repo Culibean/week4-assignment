@@ -7,53 +7,58 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  columns: #333;
+  color: #333;
   line-height: 1.6;
   padding: 20px;
+  background-image: url("/images/cockpit-4598188_1280.jpg");
+  background-size: cover;
+  background-position: cover;
+  background-attachment: fixed;
+  border: 0.3vw solid wheat;
+  border-radius: none;
+  min-width: 0;
 }
 
-form,
-.logentry {
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  border: 0.3vw solid peru;
+  border-radius: 1vw;
+  min-width: 0;
+  color: wheat;
+}
+
+h4 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: wheat;
+  border: 0.3vw solid peru;
+  border-radius: 0.6vw;
+  min-width: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   background: #fff;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.1);
-}
-
-input,
-.logentry {
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #e5a58d;
-  columns: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #a63805;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
 }
 
 fieldset {
-  border: 5px solid #ccc;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 0.7vw solid peru;
+  padding: 20px;
   margin-bottom: 10px;
-  border-radius: 7px;
-  border-color: peru;
+  border-radius: 1vw;
+  min-width: 0;
 }
 
 legend {
@@ -62,7 +67,64 @@ legend {
   color: #555;
 }
 
+label {
+  margin-bottom: -5px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+button {
+  background-color: peru;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #a63805;
+}
+
 .logentry {
   padding: 10px;
-  margin-top: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
+
+#user-input {
+  max-width: 600px;
+  margin: auto;
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  body {
+    padding: 10px;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  fieldset {
+    padding: 15px;
+    border-width: 5px;
+    border-radius: 10px;
+  }
 }
