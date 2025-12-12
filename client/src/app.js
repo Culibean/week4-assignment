@@ -113,7 +113,7 @@ async function SkylogEntries() {
       year: "numeric",
     });
 
-    entry.textContent = `${log.airline} ${log.aircraft} | Route :${log.departure} -> ${log.arrival} | Date: ${formattedDate} | On Board: ${log.username};`;
+    entry.textContent = `${log.airline} ${log.aircraft} | Route :${log.departure} -> ${log.arrival} | Date: ${formattedDate} | On Board: ${log.username}`;
 
     section.appendChild(entry);
   });
