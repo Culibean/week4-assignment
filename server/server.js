@@ -58,13 +58,17 @@ app.get("/airports", async (req, res) => {
 });
 
 app.get("/aircrafts", async (req, res) => {
-  const query = await db.query(`SELECT aircraft FROM aircraft ORDER BY name; `);
+  const query = await db.query(
+    `SELECT aircraft FROM aircraft ORDER BY aircraft; `
+  );
   console.log(query);
   res.json(query.rows);
 });
 
 app.get("/airlines", async (req, res) => {
-  const query = await db.query(`SELECT airline FROM airline ORDER BY name; `);
+  const query = await db.query(
+    `SELECT airline FROM airline ORDER BY airline; `
+  );
   console.log(query);
   res.json(query.rows);
 });
