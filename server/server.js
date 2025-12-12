@@ -22,11 +22,13 @@ app.get("/", (req, res) => {
 
 //==============================================Getting Data from the client==========================================
 
-app.post("new-skylog", (req, res) => {
+import { db } from "./dbConnection.js";
+
+app.post("/new-skylog", async (req, res) => {
   const newSkyLog = req.body.formValues;
   console.log(newSkyLog);
-  const query = db.query(
-    `INSERT INTO skylog (username, date, departure, arrival, airline, aircraft) VALUES ($1, $2, $3, $4, $5, $6)`,
+  const query = await db.query(
+    `INSERT INTO skylog (username, flight_date, departure, arrival, airline, aircraft) VALUES ($1, $2, $3, $4, $5, $6)`,
     [
       newSkyLog.username,
       newSkyLog.date,
@@ -36,10 +38,8 @@ app.post("new-skylog", (req, res) => {
       newSkyLog.aircraft,
     ]
   );
-  res.json({ status: "success, values: newSkyLog" });
+  res.json({ status: "success", values: newSkyLog });
 });
-
-import { db } from "./dbConnection.js";
 
 app.get("/skylog", async function (request, response) {
   const query = await db.query(
