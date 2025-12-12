@@ -22,8 +22,6 @@ app.get("/", (req, res) => {
 
 //==============================================Getting Data from the client==========================================
 
-import { db } from "./dbConnection.js";
-
 app.post("/new-skylog", async (req, res) => {
   const newSkyLog = req.body.formValues;
   console.log(newSkyLog);
