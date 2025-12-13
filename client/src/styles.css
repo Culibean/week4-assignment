@@ -157,7 +157,7 @@ html {
   body {
     padding: 10px;
   }
-/*avoids that content is squished too much on smaller screen*/
+  /*avoids that content is squished too much on smaller screen*/
   form {
     padding: 15px;
   }
@@ -168,4 +168,4 @@ html {
     border-radius: 10px;
   }
 }
-/*on smaller screens, too much padding uses too much space/*
+/*on smaller screens, too much padding uses too much space*/
