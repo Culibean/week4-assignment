@@ -12,11 +12,10 @@ body {
   padding: 20px;
   background-image: url("/images/cockpit-4598188_1280.jpg");
   background-size: cover;
-  background-position: cover;
+  background-position: center;
   background-attachment: fixed;
   border: 0.3vw solid wheat;
   border-radius: none;
-  min-width: 0;
 }
 
 header {
@@ -53,6 +52,7 @@ h2 {
 h4 {
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 10px;
   color: wheat;
   border: 0.3vw solid peru;
   border-radius: 0.6vw;
@@ -85,6 +85,7 @@ fieldset {
   border-radius: 1vw;
   min-width: 0;
 }
+/* min-width prevents overflow in flex, used so text boxes shrink with screen size and don't overflow */
 
 legend {
   padding: 0 10px;
@@ -138,11 +139,25 @@ button:hover {
   width: 100%;
 }
 
+/*use max-width/max-height/min-width etc to allow flexibility on small screen*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+}
+
 @media (max-width: 800px) {
   body {
     padding: 10px;
   }
-
+/*avoids that content is squished too much on smaller screen*/
   form {
     padding: 15px;
   }
@@ -153,3 +168,4 @@ button:hover {
     border-radius: 10px;
   }
 }
+/*on smaller screens, too much padding uses too much space

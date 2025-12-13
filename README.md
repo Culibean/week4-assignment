@@ -65,7 +65,11 @@ The log entry container then was another challenge. Again, I used the cookie cli
 
 Styling
 
-Still my nemesis. Especially, responsive design. This time went through all past workshops, including week 1, and I feel like this time I managed to get a website that is both large and small screen compatible. I really apreciated the feedback I had on my last assignnments so I could also use the videos available to rewatch. Also, for the first time I realised that VScode has mdn references build in, so it was much easier to see what I can do with each command. However, I still sometimes struggle with understanding how one small change can have an impact on the whole design. I feel much more comfortable with the backend.
+Still my nemesis. Especially, responsive design. This time went through all past workshops, including week 1, and I feel like this time I managed to get a website that is both large and small screen compatible. I really apreciated the feedback I had on my last assignnments so I could also use the videos available to rewatch.
+
+I also made use of the inspection tool on other websites but also asked the VS code copilot for help when I just couldn't figure out the impact of individual settings.
+
+Also, for the first time I realised that VScode has mdn references build in, so it was much easier to see what I can do with each command. However, I still sometimes struggle with understanding how one small change can have an impact on the whole design. I feel much more comfortable with the backend.
 
 Conclusion
 

@@ -120,3 +120,26 @@ async function SkylogEntries() {
 }
 
 SkylogEntries();
+
+//added in a go back to top bottom as log entries might get long, copied and amended from week 1 assignment (realised week 1 did not work as this did not specifically ask for type module JS in the client). Tried it with eventListener instead
+
+//Future note: when type module is declared, this particular functions doesn't get automatically added to browser/window. For just clicks, window. isn't needed, as the event is self explanatory. The back to top functions needs to lisen to scroll and click as it also looks out for position. (https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+
+const topButton = document.getElementById("myBtn");
+
+window.addEventListener("scroll", scrollFunction);
+
+function scrollFunction() {
+  if (window.scrollY > 10) {
+    topButton.style.display = "block";
+  } else {
+    topButton.style.display = "none";
+  }
+}
+
+topButton.addEventListener("click", topFunction);
+
+function topFunction(event) {
+  event.preventDefault(); //stops if on a smaller screen it's inside the form, so user doesn't accidentally click submit
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
