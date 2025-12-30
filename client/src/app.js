@@ -74,18 +74,36 @@ selectAircraft();
 
 //TODO: create function so when user submits their data, it reaches the database
 
-function handleSkyLogsubmit(event) {
+//TODO: get flightdata from the server
+
+async function getFlightStatus(flightNumber) {
+  const res = await fetch(
+    `https://week4-assignment-1-mku5.onrender.com/flight-status/${flightNumber}`
+  );
+  const data = await res.json();
+  console.log("Flight status:", data);
+  return data;
+}
+
+async function handleSkyLogsubmit(event) {
   event.preventDefault();
   const formDataTemplate = new FormData(skyLogForm);
   const formValues = Object.fromEntries(formDataTemplate);
   console.log(formValues);
 
-  fetch("https://week4-assignment-1-mku5.onrender.com/new-skylog", {
+  const flightStatus = await getFlightStatus(formValues.flight_number);
+
+  const logWithStatus = {
+    ...formValues,
+    status: flightStatus?.status || "unknown",
+  };
+
+  await fetch("https://week4-assignment-1-mku5.onrender.com/new-skylog", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ formValues }),
+    body: JSON.stringify({ formValues: logWithStatus }),
   });
   skyLogForm.reset();
 }
@@ -113,7 +131,11 @@ async function SkylogEntries() {
       year: "numeric",
     });
 
-    entry.textContent = `${log.airline} ${log.aircraft} | Route :${log.departure} -> ${log.arrival} | Date: ${formattedDate} | On Board: ${log.username}`;
+    entry.textContent = `${log.airline} ${log.aircraft} | Route :${
+      log.departure
+    } -> ${log.arrival} | Date: ${formattedDate} | On Board: ${
+      log.username
+    } | Status: ${log.status || "N/A"}`;
 
     section.appendChild(entry);
   });
