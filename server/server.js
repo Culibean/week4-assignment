@@ -27,10 +27,13 @@ app.get("/", (req, res) => {
 //==============================================Getting Data from the client==========================================
 
 app.post("/new-skylog", async (req, res) => {
+  console.log("BODY:", req.body); // ← ADD THIS
+  console.log("FORMVALUES:", req.body.formValues); // ← AND THIS
+
   const newSkyLog = req.body.formValues;
   console.log(newSkyLog);
   const query = await db.query(
-    `INSERT INTO skylog (username, flight_date, departure, arrival, airline, aircraft) VALUES ($1, $2, $3, $4, $5, $6)`,
+    `INSERT INTO skylog (username, flight_date, departure, arrival, airline, aircraft, flight_number, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
     [
       newSkyLog.username,
       newSkyLog.flight_date,
@@ -38,6 +41,8 @@ app.post("/new-skylog", async (req, res) => {
       newSkyLog.arrival,
       newSkyLog.airline,
       newSkyLog.aircraft,
+      newSkyLog.flight_number,
+      newSkyLog.status,
     ]
   );
   res.json({ status: "success", values: newSkyLog });
@@ -45,7 +50,7 @@ app.post("/new-skylog", async (req, res) => {
 
 app.get("/skylog", async function (request, response) {
   const query = await db.query(
-    `SELECT username, flight_date, departure, arrival, airline, aircraft FROM skylog; `
+    `SELECT username, flight_date, departure, arrival, airline, aircraft, flight_number, status FROM skylog; `
   );
   console.log(query);
   response.json(query.rows);
