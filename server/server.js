@@ -3,6 +3,10 @@
 import express, { response } from "express";
 import cors from "cors";
 import { db } from "./dbConnection.js";
+import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -71,4 +75,32 @@ app.get("/airlines", async (req, res) => {
   );
   console.log(query.rows);
   res.json(query.rows);
+});
+
+//Flight Status API:
+
+app.get("/flight-status/:flight", async (req, res) => {
+  const flightNumber = req.params.flight;
+  const API_KEY = process.env.AVIATIONSTACK_API_KEY;
+
+  const response = await axios.get("http://api.aviationstack.com/v1/flights", {
+    params: {
+      access_key: API_KEY,
+      flight_iata: flightNumber,
+    },
+  });
+
+  const flightData = response.data.data[0];
+
+  if (flightData) {
+    res.json({
+      flight: flightNumber,
+      status: flightData.flight_status,
+      departure: flightData.departure.estimated,
+      arrival: flightData.arrival.estimated,
+      airline: flightData.airline.name,
+    });
+  } else {
+    res.json({});
+  }
 });
